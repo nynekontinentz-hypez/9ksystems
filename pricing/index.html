@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>9K Systems — Transparent Pricing</title>
+  <meta name="description" content="Simple, flat-rate MSP plans priced 30–40% below comparable Florida MSPs." />
+  <style>
+    :root{
+      --bg:#090909;
+      --panel:#111;
+      --panel2:#0f0f0f;
+      --text:#f5f5f5;
+      --muted:#bdbdbd;
+      --line:rgba(255,255,255,.08);
+      --cta:#ff7a00;
+      --ctaText:#000;
+      --ok:#39d98a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      line-height:1.6;
+    }
+    a{color:inherit}
+    header{
+      padding:22px 8%;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .logo{
+      font-size:1.1rem;
+      font-weight:800;
+      letter-spacing:.14em;
+    }
+    nav{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      font-weight:700;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    nav a{ text-decoration:none; opacity:.95 }
+    nav a:hover{ color:var(--text) }
+
+    .wrap{ padding:60px 8%; max-width:1200px; margin:0 auto; }
+    .hero{
+      display:grid;
+      gap:16px;
+      margin-bottom:36px;
+    }
+    h1{ font-size:3rem; margin:0; line-height:1.1; }
+    .sub{ color:var(--muted); max-width:850px; font-size:1.08rem; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.03);
+      border-radius:999px;
+      color:#ffd8b2;
+      width:fit-content;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:18px;
+      align-items:stretch;
+      margin-top:18px;
+    }
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      position:relative;
+      overflow:hidden;
+    }
+    .card h2{ margin:0 0 6px 0; font-size:1.25rem; }
+    .card p{ margin:0 0 14px 0; color:var(--muted); }
+    .priceRow{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      margin:8px 0 8px;
+    }
+    .price{
+      font-size:2.4rem;
+      font-weight:900;
+      color:var(--cta);
+      letter-spacing:-.02em;
+    }
+    .per{ color:var(--muted); font-weight:700; }
+    .market{ color:var(--muted); font-size:.95rem; }
+    .save{ color:var(--ok); font-weight:900; font-size:.95rem; }
+
+    ul{ padding-left:18px; margin:12px 0 18px; color:#ddd; }
+    li{ margin:8px 0; }
+    .ctaRow{ margin-top:auto; padding-top:10px; }
+    .btn{
+      display:inline-block;
+      padding:14px 18px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.02em;
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .btn.primary{ background:var(--cta); color:var(--ctaText); border-color:transparent; }
+    .btn.secondary{ background:transparent; color:var(--text); }
+    .btn:hover{ filter:brightness(1.05); }
+
+    .badge{
+      position:absolute;
+      top:16px;
+      right:16px;
+      background:rgba(255,122,0,.14);
+      border:1px solid rgba(255,122,0,.35);
+      color:#ffd1a8;
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size:.85rem;
+    }
+    .addons{
+      margin-top:50px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+    .addons h3{ margin:0 0 10px 0; font-size:1.6rem; }
+    .addons p{ margin:0 0 16px 0; color:var(--muted); }
+    .addonGrid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:12px;
+    }
+    .addon{
+      background:var(--panel2);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .addon strong{ display:block; margin-bottom:4px; }
+    .addon .desc{ color:var(--muted); font-size:.95rem; }
+    .addon .priceTag{ font-weight:900; color:#ffd8b2; white-space:nowrap; }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:24px 8%;
+      color:#8f8f8f;
+      margin-top:60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">9K SYSTEMS</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/audit">Free Audit</a>
+      <a href="https://portal.9ksystems.net/" target="_blank" rel="noreferrer">Client Portal</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Transparent <span style="color:var(--cta)">Pricing</span></h1>
+      <p class="sub">
+        Simple, flat-rate plans. Priced 30–40% below comparable Florida MSPs.
+        No hidden fees, no hourly overages, no surprise invoices.
+      </p>
+      <div class="pill">💡 All plans start with a free 30-min audit — no commitment required</div>
+      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn primary" href="/audit">Start Free 30‑min Audit</a>
+        <a class="btn secondary" href="https://cal.com/9ksystems" target="_blank" rel="noreferrer">Schedule Consultation</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Essential</h2>
+        <p>For small teams getting their IT baseline right.</p>
+
+        <div class="priceRow">
+          <div class="price">$89</div>
+          <div class="per">/user/mo</div>
+        </div>
+        <div class="market">Market rate: $125–$150/user · <span class="save">You save ~35%</span></div>
+
+        <ul>
+          <li>24/7 remote monitoring</li>
+          <li>Help desk (business hours)</li>
+          <li>Patch management &amp; updates</li>
+          <li>Antivirus &amp; endpoint protection</li>
+          <li>Cloud backup (up to 500GB)</li>
+          <li>Monthly health report</li>
+        </ul>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="/audit">Get Started →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="badge">Most Popular</div>
+        <h2>Professional</h2>
+        <p>Full coverage and fast response for growing businesses.</p>
+
+        <div class="priceRow">
+          <div class="price">$149</div>
+          <div class="per">/user/mo</div>
+        </div>
+        <div class="market">Market rate: $200–$250/user · <span class="save">You save ~35%</span></div>
+
+        <ul>
+          <li>Everything in Essential</li>
+          <li>24/7 help desk support</li>
+          <li>Advanced threat detection (EDR)</li>
+          <li>Microsoft 365 management</li>
+          <li>Cloud backup (up to 2TB)</li>
+          <li>Firewall &amp; network monitoring</li>
+          <li>Quarterly strategy review</li>
+        </ul>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="/audit">Get Started →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Enterprise</h2>
+        <p>Full-spectrum IT — strategy, compliance, and everything in between.</p>
+
+        <div class="priceRow">
+          <div class="price">$219</div>
+          <div class="per">/user/mo</div>
+        </div>
+        <div class="market">Market rate: $300–$400/user · <span class="save">You save ~35%</span></div>
+
+        <ul>
+          <li>Everything in Professional</li>
+          <li>Virtual CIO (vCIO) service</li>
+          <li>Compliance readiness (HIPAA, SOC2)</li>
+          <li>Disaster recovery planning</li>
+          <li>Unlimited cloud storage</li>
+          <li>Priority 1-hour response SLA</li>
+          <li>Monthly vCIO strategy call</li>
+        </ul>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="/audit">Get Started →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="addons">
+      <h3>À la carte add-ons</h3>
+      <p>Bolt on exactly what you need. No package upgrades required.</p>
+
+      <div class="addonGrid">
+        <div class="addon">
+          <div>
+            <strong>Security Awareness Training</strong>
+            <div class="desc">Monthly phishing simulations &amp; staff training</div>
+          </div>
+          <div class="priceTag">$12/user</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <strong>Dark Web Monitoring</strong>
+            <div class="desc">Credential &amp; data breach alerts</div>
+          </div>
+          <div class="priceTag">$25/mo</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <strong>Microsoft 365 Backup</strong>
+            <div class="desc">Full mailbox + Teams + SharePoint backup</div>
+          </div>
+          <div class="priceTag">$8/user</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <strong>Onsite Support</strong>
+            <div class="desc">Scheduled on-site visits anywhere in Florida</div>
+          </div>
+          <div class="priceTag">$125/hr</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <strong>Cloud Migration Project</strong>
+            <div class="desc">Full migration scoping, execution &amp; testing</div>
+          </div>
+          <div class="priceTag">Custom</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <strong>IT Audit &amp; Assessment</strong>
+            <div class="desc">Deep-dive infrastructure &amp; security audit</div>
+          </div>
+          <div class="priceTag">Free*</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 9K Systems • support@9ksystems.net • <a href="/">Home</a> • <a href="/pricing">Pricing</a> • <a href="/audit">Free Audit</a>
+  </footer>
+</body>
+</html>
